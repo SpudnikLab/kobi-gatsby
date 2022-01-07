@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+footer {
+  margin: 0 0 20px 0;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.contentContainer {
+  padding: 40px 0 10px 0;
+}
+
+.postContent {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 210px;
+  max-width: 480px;
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: teal;
+}
+
+.icon {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.excerpt {
+  font-size: 15px;
+}
+
+.ratings {
+  margin-top: 15px;
+}
+
+.ratingSmallContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 170px;
+}
+
+.rating {
+  display: inline-block;
+  width: 70px;
+  height: 14px;
+  background: url(../images/rating.png) top left;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.ratingSmall {
+  display: inline-block;
+  width: 60px;
+  height: 13px;
+  background: url(../images/rating-small.png) top left;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.rate-5 {
+  background-position: 0 -70px;
+}
+.rate-4 {
+  background-position: 0 -56px;
+}
+.rate-3 {
+  background-position: 0 -42px;
+}
+.rate-2 {
+  background-position: 0 -28px;
+}
+.rate-1 {
+  background-position: 0 -14px;
+}
+
+.smallRate-5 {
+  background-position: 0 -65px;
+}
+.smallRate-4 {
+  background-position: 0 -52px;
+}
+.smallRate-3 {
+  background-position: 0 -39px;
+}
+.smallRate-2 {
+  background-position: 0 -26px;
+}
+.smallRate-1 {
+  background-position: 0 -13px;
+}
+
+.fileSize {
+  fill: teal;
+  display: flex;
+  align-items: center;
+  margin: 15px 0 0;
+}
+
+.workOffline {
+  fill: teal;
+  display: flex;
+  align-items: center;
+  margin: 5px 0 0;
+}
+
+.lastUpdated {
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.footerButton {
+  background-color: white;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 5px;
+  padding: 8px;
+  border: 2px solid teal;
+  border-radius: 5px;
+  color: teal;
+  fill: teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.footerButton:hover {
+  border: 2px solid #2d5750;
+  color: #2d5750;
+  fill: #2d5750;
+  background-color: #f0f0f0;
+}
+
+.audio {
+  margin: 15px 0;
+}
+
+.footerIcon {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
+
+.audioIcon {
+  height: 16px;
+  width: 25px;
+  margin-right: 10px;
+}

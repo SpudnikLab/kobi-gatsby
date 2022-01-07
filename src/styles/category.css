@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+footer{
+  margin:0 0 20px 0;
+}
+
+.pageTitle {
+  background-color: #2d5750;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px 0px;
+  width: 100%;
+  position:fixed;
+}
+
+.contentContainer {
+  padding: 45px 0 10px 0;
+}
+
+.innerContent {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 240px;
+  max-width: 480px;
+}
+
+.appContainer {
+  display: flex;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.appContainer:hover {
+  background-color: #d9ffff;
+}
+
+.appIcon {
+  height: 35px;
+  width: 35px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.rating {
+  display: inline-block;
+  width: 70px;
+  height: 14px;
+  background: url(../images/rating.png) top left;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.rate-5 {
+  background-position: 0 -70px;
+}
+.rate-4 {
+  background-position: 0 -56px;
+}
+.rate-3 {
+  background-position: 0 -42px;
+}
+.rate-2 {
+  background-position: 0 -28px;
+}
+.rate-1 {
+  background-position: 0 -14px;
+}
+
+.footerButton{
+  margin-bottom: 5px;
+  padding:8px;
+  border:2px solid teal;
+  border-radius: 5px;
+  color:teal;
+  fill: teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.footerButton:hover{
+  border:2px solid #2d5750;
+  color: #2d5750;
+  fill: #2d5750;
+  background-color: #f0f0f0;
+}
+
+.footerIcon{
+  height:15px;
+  width: 15px;
+  margin-right: 10px;
+}
