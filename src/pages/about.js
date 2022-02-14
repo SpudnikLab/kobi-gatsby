@@ -7,9 +7,14 @@ import "../styles/category.css"
 import Seo from "../components/seo"
 
 const About = ({}) => {
-  let path = window.location.pathname
-  let category = path.split("/").pop()
-  let capitalized = category.charAt(0).toUpperCase() + category.slice(1)
+  let path
+  let category
+  let capitalized
+  if (typeof window !== "undefined") {
+    path = window.location.pathname
+    category = path.split("/").pop()
+    capitalized = category.charAt(0).toUpperCase() + category.slice(1)
+  }
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()

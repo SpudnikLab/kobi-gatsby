@@ -112,7 +112,7 @@ const Category = ({ data }) => {
           <div className="excerpt">{ReactHtmlParser(post.excerpt)}</div>
           <div
             className="audio-player"
-            style={{ display: showAudioPlayer ? "block" : "none" }}
+            style={{ display: showAudioPlayer && post.appFields.audioReview?.mediaItemUrl ? "block" : "none" }}
           >
             <audio
               controls
@@ -123,7 +123,7 @@ const Category = ({ data }) => {
               data-setup='{"fluid":true,"progressControl":{"children":[],"SeekBar":{"children":["MouseTimeDisplay","PlayProgressBar"]}},"CurrentTimeDisplay":true,"DurationDisplay":true,"controlBar":{"children":["PlayToggle"]}}'
             >
               <source
-                src={post.appFields.audioReview.mediaItemUrl}
+                src={post.appFields.audioReview?.mediaItemUrl}
                 type="audio/mpeg"
               />
             </audio>
@@ -132,7 +132,7 @@ const Category = ({ data }) => {
             className="postButton audio"
             onClick={() => setShowAudioPlayer(true)}
             onKeyDown={() => setShowAudioPlayer(true)}
-            style={{ display: showAudioPlayer ? "none" : "flex" }}
+            style={{ display: showAudioPlayer || !post.appFields.audioReview?.mediaItemUrl ? "none" : "flex" }}
           >
             <svg className="audioIcon" viewBox="0 0 22 18">
               <path d="M5.8,3.6H2c-1.1,0-2,0.9-2,2v6c0,1.1,0.9,2,2,2h3.8l7.2,3.6V0L5.8,3.6z M5,11.6H2v-6h3V11.6z M11,14l-4-2V5.2l4-2V14z" />

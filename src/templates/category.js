@@ -8,9 +8,14 @@ import Seo from "../components/seo"
 
 const Category = ({ data }) => {
   let posts = data.wpgraphql.posts.nodes
-  let path = window.location.pathname
-  let category = path.split("/").pop()
-  let capitalized = category.charAt(0).toUpperCase() + category.slice(1)
+  let path
+  let category
+  let capitalized
+  if (typeof window !== 'undefined') {
+    path = window.location.pathname
+    category = path.split("/").pop()
+    capitalized = category.charAt(0).toUpperCase() + category.slice(1)
+  }
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
