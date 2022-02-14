@@ -62,7 +62,7 @@ const IndexPage = ({ data }) => {
           </section>
           <footer>
             <p>Kobi finds apps that help you live a better life.</p>
-            <Link to="/pages/about">
+            <Link to="/about">
               <div className="aboutButton">Learn about Kobi</div>
             </Link>
             <Box sx={{ display: { xs: "block", sm: "none" }, width:"180px", marginRight:"auto", marginLeft:"auto", fontSize:14, mt:2}}>

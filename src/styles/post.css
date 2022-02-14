@@ -1,7 +1,10 @@
+@import url('https://vjs.zencdn.net/7.17.0/video-js.css');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 a {
@@ -19,6 +22,10 @@ p {
 
 .contentContainer {
   padding: 40px 0 10px 0;
+}
+
+.similarAppsContainer {
+  padding: 10px 0;
 }
 
 .postContent {
@@ -128,7 +135,7 @@ p {
   margin-top: 15px;
 }
 
-.footerButton {
+.postButton {
   background-color: white;
   width: 100%;
   font-size: 18px;
@@ -142,9 +149,10 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.footerButton:hover {
+.postButton:hover {
   border: 2px solid #2d5750;
   color: #2d5750;
   fill: #2d5750;
@@ -165,4 +173,110 @@ p {
   height: 16px;
   width: 25px;
   margin-right: 10px;
+}
+
+.audio-player {
+  margin-bottom: 16px;
+}
+
+.audio-player-btn {
+  width: 33.3333%;
+  height: 100%;
+  cursor: pointer;
+  border: solid 1px #fff !important;
+}
+.audio-player-btn:hover {
+  background-color: #2d5750 !important;
+}
+.audio-player-btn--backward {
+  border-width: 1px 2px 0 0 !important;
+  background: url(../images/backward-10.svg) no-repeat teal center/16px auto !important;
+}
+.audio-player-btn--forward {
+  border-width: 1px 0 0 2px !important;
+  background: url(../images/forward-10.svg) no-repeat teal center/16px auto !important;
+}
+.audio-player .video-js {
+  background: none;
+}
+.audio-player .video-js.vjs-fluid {
+  height: 62.5px;
+  padding: 0;
+}
+.audio-player .video-js .vjs-big-play-button {
+  display: none;
+}
+.audio-player .video-js .vjs-control:focus {
+  text-shadow: none;
+}
+.audio-player .video-js .vjs-progress-control {
+  width: 100%;
+  height: 10px;
+  background: #008080;
+}
+.audio-player .video-js .vjs-progress-control .vjs-progress-holder {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: none;
+}
+.audio-player .video-js .vjs-progress-control .vjs-progress-holder:hover {
+  font-size: 1em;
+}
+.audio-player .video-js .vjs-progress-control .vjs-play-progress {
+  background: none;
+}
+.audio-player .video-js .vjs-progress-control .vjs-play-progress::before {
+  transform: translateY(3px);
+  display: inline-block;
+  width: 6px;
+  height: 100%;
+  content: "";
+  border-radius: 0;
+  background: #f09969;
+}
+.audio-player .video-js .vjs-current-time,
+.audio-player .video-js .vjs-duration {
+  font-size: 14px;
+  line-height: 1.5;
+  display: block;
+  width: 50%;
+  height: auto;
+  padding: 0 5px;
+  color: #031e1b;
+  background: #4eb6ab;
+}
+.audio-player .video-js .vjs-current-time {
+  float: left;
+  text-align: left;
+}
+.audio-player .video-js .vjs-duration {
+  float: right;
+  text-align: right;
+}
+.audio-player .video-js .vjs-time-tooltip {
+  font-size: 1em !important;
+}
+.audio-player .video-js .vjs-control-bar {
+  display: flex;
+  background: none;
+  justify-content: space-between;
+}
+.audio-player .video-js .vjs-control-bar .vjs-play-control {
+  width: 33.33%;
+  border: solid 1px #fff;
+  border-width: 1px 1px 0;
+  background: #008080;
+}
+.audio-player .video-js .vjs-control-bar .vjs-play-control:hover {
+  background-color: #2d5750;
+}
+
+.similarApps {
+  background-color: #2d5750;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px 0px;
+  width: 100%;
 }

@@ -1,62 +1,34 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import ReactHtmlParser from "react-html-parser"
-import VideoJS from "../components/videoJS"
 import Typography from "@mui/material/Typography"
+import videojs from "video.js"
 
 import "../styles/post.css"
 import Seo from "../components/seo"
 
 const Category = ({ data }) => {
   let post = data.wpgraphql.postBy
+  let posts = data.wpgraphql.posts.nodes
   let [showAudioPlayer, setShowAudioPlayer] = useState(false)
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
 
-  const playerRef = React.useRef(null)
+  let selectedPosts = []
 
-  // let x = {
-  //   fluid: true,
-  //   progressControl: {
-  //     children: [],
-  //     SeekBar: { children: ["MouseTimeDisplay", "PlayProgressBar"] },
-  //   },
-  //   CurrentTimeDisplay: true,
-  //   DurationDisplay: true,
-  //   controlBar: { children: ["PlayToggle"] },
-  // }
-
-  const videoJsOptions = {
-    fluid: true,
-    progressControl: {
-      children: [],
-      SeekBar: { children: ["MouseTimeDisplay", "PlayProgressBar"] },
-    },
-    CurrentTimeDisplay: true,
-    DurationDisplay: true,
-    controlBar: { children: ["PlayToggle"] },
-    sources: [
-      {
-        src: post.appFields.audioReview.mediaItemUrl,
-        type: "audio/mpeg",
-      },
-    ],
+  let max = posts.length > 3 ? 3 : posts.length
+  var random = []
+  for (var i = 0; i < max; i++) {
+    var temp = Math.floor(Math.random() * posts.length)
+    if (random.indexOf(temp) === -1) {
+      random.push(temp)
+      selectedPosts.push(posts[temp])
+    } else i--
   }
 
-  const handlePlayerReady = player => {
-    playerRef.current = player
-
-    // you can handle player events here
-    player.on("waiting", () => {
-      console.log("player is waiting")
-    })
-
-    player.on("dispose", () => {
-      console.log("player will dispose")
-    })
-  }
+  
 
   function getDate(str) {
     var monthList = [
@@ -78,7 +50,47 @@ const Category = ({ data }) => {
       day = ("0" + date.getDate()).slice(-2)
     return [day, month, date.getFullYear()].join(" ")
   }
-  console.log(data)
+
+  const useScript = url => {
+    useEffect(() => {
+      const script = document.createElement("script")
+
+      script.src = url
+      script.async = true
+
+      document.body.appendChild(script)
+
+      return () => {
+        document.body.removeChild(script)
+      }
+    }, [url])
+  }
+
+  useScript("https://vjs.zencdn.net/7.17.0/video.min.js")
+  // useScript("../review.js")
+
+  useEffect(() => {
+    setTimeout(function addComponent() {
+      var player = videojs.getPlayer("audio-review")
+      var controlBar = document.querySelector(".vjs-control-bar")
+      var backward10 = document.createElement("button")
+      backward10.className = "audio-player-btn audio-player-btn--backward"
+      var forward10 = document.createElement("button")
+      forward10.className = "audio-player-btn audio-player-btn--forward"
+
+      controlBar.insertBefore(backward10, controlBar.childNodes[0])
+      backward10.addEventListener("click", function (e) {
+        e.preventDefault()
+        player.currentTime(player.currentTime() - 10)
+      })
+      controlBar.appendChild(forward10)
+      forward10.addEventListener("click", function (e) {
+        e.preventDefault()
+        player.currentTime(player.currentTime() + 10)
+      })
+    }, 100)
+  }, [])
+
   return (
     <div ref={container} className="container">
       <Seo title={post.title} />
@@ -92,29 +104,44 @@ const Category = ({ data }) => {
             />
           </div>
           <Typography
-            sx={{ fontSize: 18, fontWeight: 600, color: "teal" }}
+            sx={{ fontSize: 18, fontWeight: 700, color: "teal" }}
             component="h1"
           >
             {post.title}
           </Typography>
           <div className="excerpt">{ReactHtmlParser(post.excerpt)}</div>
-          {showAudioPlayer ? null : (
-            <button
-              className="footerButton audio"
-              onClick={() => setShowAudioPlayer(true)}
-              onKeyDown={() => setShowAudioPlayer(true)}
+          <div
+            className="audio-player"
+            style={{ display: showAudioPlayer ? "block" : "none" }}
+          >
+            <audio
+              controls
+              id="audio-review"
+              className="video-js vjs-default-skin"
+              height="125"
+              preload="auto"
+              data-setup='{"fluid":true,"progressControl":{"children":[],"SeekBar":{"children":["MouseTimeDisplay","PlayProgressBar"]}},"CurrentTimeDisplay":true,"DurationDisplay":true,"controlBar":{"children":["PlayToggle"]}}'
             >
-              <svg className="audioIcon" viewBox="0 0 22 18">
-                <path d="M5.8,3.6H2c-1.1,0-2,0.9-2,2v6c0,1.1,0.9,2,2,2h3.8l7.2,3.6V0L5.8,3.6z M5,11.6H2v-6h3V11.6z M11,14l-4-2V5.2l4-2V14z" />
-                <path d="M18.7,0.1c2,2,3.3,5.1,3.3,8.5s-1.3,6.5-3.3,8.5l-1.6-1.3c1.8-1.6,2.9-4.3,2.9-7.3S18.9,3,17.1,1.3L18.7,0.1z" />
-                <path d="M18,8.6c0-2.4-0.9-4.6-2.4-6.1L14,3.8c1.2,1.1,2,2.8,2,4.8c0,2-0.8,3.7-2,4.8l1.6,1.3C17.1,13.2,18,11,18,8.6z" />{" "}
-              </svg>
+              <source
+                src={post.appFields.audioReview.mediaItemUrl}
+                type="audio/mpeg"
+              />
+            </audio>
+          </div>
+          <button
+            className="postButton audio"
+            onClick={() => setShowAudioPlayer(true)}
+            onKeyDown={() => setShowAudioPlayer(true)}
+            style={{ display: showAudioPlayer ? "none" : "flex" }}
+          >
+            <svg className="audioIcon" viewBox="0 0 22 18">
+              <path d="M5.8,3.6H2c-1.1,0-2,0.9-2,2v6c0,1.1,0.9,2,2,2h3.8l7.2,3.6V0L5.8,3.6z M5,11.6H2v-6h3V11.6z M11,14l-4-2V5.2l4-2V14z" />
+              <path d="M18.7,0.1c2,2,3.3,5.1,3.3,8.5s-1.3,6.5-3.3,8.5l-1.6-1.3c1.8-1.6,2.9-4.3,2.9-7.3S18.9,3,17.1,1.3L18.7,0.1z" />
+              <path d="M18,8.6c0-2.4-0.9-4.6-2.4-6.1L14,3.8c1.2,1.1,2,2.8,2,4.8c0,2-0.8,3.7-2,4.8l1.6,1.3C17.1,13.2,18,11,18,8.6z" />{" "}
+            </svg>
 
-              <div>Play audio review</div>
-            </button>
-          )}
-          {/* <VideoJS options={videoJsOptions} onReady={handlePlayerReady} /> */}
-          {/* post.appFields.audioReview.mediaItemUrl */}
+            <div>Play audio review</div>
+          </button>
           <div className="goodFor">
             <Typography
               sx={{ fontSize: 15, fontWeight: 600 }}
@@ -154,7 +181,7 @@ const Category = ({ data }) => {
           <div className="ratings">
             <div>
               <Typography
-                sx={{ fontSize: 15, fontWeight: 500, marginRight: "10px" }}
+                sx={{ fontSize: 15, fontWeight: 600, marginRight: "10px" }}
                 component="strong"
               >
                 Overall ratings
@@ -195,7 +222,10 @@ const Category = ({ data }) => {
               />
             </div>
           </div>
-          <div className="fileSize">
+          <div
+            className="fileSize"
+            style={{ display: post.appFields.fileSize ? "flex" : "none" }}
+          >
             <svg
               version="1.1"
               x="0px"
@@ -207,7 +237,7 @@ const Category = ({ data }) => {
                 <path d="M11.9,6.36L9.29,8.96V0.58H7.71v8.38L5.1,6.36L3.98,7.48l4.52,4.52l4.52-4.52L11.9,6.36z M16.42,14.83v-3.17								h-1.58v3.17H2.17v-3.17H0.58v3.17c0,0.87,0.71,1.58,1.58,1.58h12.67C15.71,16.42,16.42,15.71,16.42,14.83z"></path>
               </g>
             </svg>
-            <Typography sx={{ fontSize: 14, fontWeight: 500 }}>
+            <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
               {`File Size:  ${post.appFields.fileSize}MB`}
             </Typography>
           </div>
@@ -237,7 +267,7 @@ const Category = ({ data }) => {
                 ></rect>
               </g>
             </svg>
-            <Typography sx={{ fontSize: 14, fontWeight: 500 }}>
+            <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
               {post.appFields.worksOffline
                 ? "Works offline"
                 : "Does Not work offline"}
@@ -248,12 +278,52 @@ const Category = ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="similarApps">
+        <div className="innerContent">
+          <Typography
+            component="h1"
+            sx={{ textTransform: "uppercase", fontWeight: 600 }}
+          >
+            Similar Apps
+          </Typography>
+        </div>
+      </div>
+      <div className="similarAppsContainer">
+        <div className="innerContent">
+          {selectedPosts.map(post => {
+            return (
+              <Link key={post.slug} to={`/${post.slug}`}>
+                <div className="appContainer">
+                  <img
+                    src={post.featuredImage.node.mediaItemUrl}
+                    alt={post.title}
+                    className="appIcon"
+                  />
+                  <div>
+                    <Typography
+                      sx={{ fontSize: 16, lineHeight: "20px", fontWeight: 600 }}
+                    >
+                      {post.title}
+                    </Typography>
+                    <Typography sx={{ fontSize: 14 }}>
+                      {post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")}
+                    </Typography>
+                    <div
+                      className={`rating rate-${post.appFields.overallRating}`}
+                    />
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
       <footer>
         <div className="innerContent">
           <Link
             to={`/categories/${post.categories.nodes[0].name.toLowerCase()}`}
           >
-            <button className="footerButton">
+            <button className="postButton">
               <svg
                 className="footerIcon"
                 version="1.1"
@@ -270,7 +340,7 @@ const Category = ({ data }) => {
             </button>
           </Link>
           <button
-            className="footerButton"
+            className="postButton"
             onClick={executeScroll}
             onKeyDown={executeScroll}
           >
@@ -288,8 +358,23 @@ const Category = ({ data }) => {
 }
 
 export const query = graphql`
-  query getPost($slug: String!) {
+  query getPost($slug: String!, $category: String!) {
     wpgraphql {
+      posts(where: { categoryName: $category }, first: 50) {
+        nodes {
+          slug
+          title
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+          appFields {
+            overallRating
+          }
+          excerpt
+        }
+      }
       postBy(slug: $slug) {
         appFields {
           audioReview {

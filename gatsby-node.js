@@ -28,17 +28,22 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               slug
+              categories {
+                nodes {
+                  name
+                }
+              }
             }
           }
         }
       }
     }
   `).then(result => {
-    result.data.wpgraphql.posts.edges.forEach( item => {
+    result.data.wpgraphql.posts.edges.forEach(item => {
       createPage({
         path: "/" + item.node.slug,
         component: require.resolve("./src/templates/post.js"),
-        context: { slug: item.node.slug },
+        context: { slug: item.node.slug, category:item.node.categories.nodes[0].name },
       })
     })
   })

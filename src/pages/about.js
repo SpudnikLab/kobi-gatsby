@@ -6,8 +6,7 @@ import Typography from "@mui/material/Typography"
 import "../styles/category.css"
 import Seo from "../components/seo"
 
-const Category = ({ data }) => {
-  let posts = data.wpgraphql.posts.nodes
+const About = ({}) => {
   let path = window.location.pathname
   let category = path.split("/").pop()
   let capitalized = category.charAt(0).toUpperCase() + category.slice(1)
@@ -25,33 +24,45 @@ const Category = ({ data }) => {
         </div>
       </header>
       <div className="contentContainer">
-        <div className="innerContent">
-          {posts.map(post => {
-            return (
-              <Link key={post.slug} to={`/${post.slug}`}>
-                <div className="appContainer">
-                  <img
-                    src={post.featuredImage.node.mediaItemUrl}
-                    alt={post.title}
-                    className="appIcon"
-                  />
-                  <div>
-                    <Typography
-                      sx={{ fontSize: 16, lineHeight: "20px", fontWeight: 600 }}
-                    >
-                      {post.title}
-                    </Typography>
-                    <Typography sx={{ fontSize: 14 }}>
-                      {post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")}
-                    </Typography>
-                    <div
-                      className={`rating rate-${post.appFields.overallRating}`}
-                    />
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+        <div className="postContent">
+          <div>
+            <img
+              src={
+                "https://kobi.spudniklab.com/wp-content/uploads/2021/05/kobi.svg"
+              }
+              alt={"Kobi Logo"}
+              style={{ height: "auto", maxHeight: "150px", width: "100%" }}
+            />
+          </div>
+          <Typography
+            sx={{ fontSize: 18, fontWeight: 700, color: "teal" }}
+            component="h1"
+          >
+            Hi! I'm Kobi
+          </Typography>
+          <p>Kobi reviews apps, especially for users of KaiOS phones.</p>
+          <Typography
+            sx={{ fontSize: "1rem", fontWeight: 500, color: "teal" }}
+            component="h1"
+          >
+            What are apps?
+          </Typography>
+          <p>
+            ”App” is short for “mobile application”. Apps can help you do a
+            variety of things, like message your friends (Whatsapp or Facebook),
+            get information (Google Assistant), or just have fun playing games.
+          </p>
+          <Typography
+            sx={{ fontSize: "1rem", fontWeight: 500, color: "teal" }}
+            component="h1"
+          >
+            Why use Kobi?
+          </Typography>
+          <p>
+            There are a lot of apps available, but not all of them are good! We
+            test the apps, and find the best ones so you don’t have to waste
+            time downloading and trying different apps.
+          </p>
         </div>
       </div>
       <footer>
@@ -87,29 +98,4 @@ const Category = ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query GetPostsByCategory($slug: String!) {
-    wpgraphql {
-      posts(
-        where: { categoryName: $slug, orderby: { field: DATE, order: DESC } }
-        first: 100
-      ) {
-        nodes {
-          slug
-          title
-          featuredImage {
-            node {
-              mediaItemUrl
-            }
-          }
-          appFields {
-            overallRating
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`
-
-export default Category
+export default About
