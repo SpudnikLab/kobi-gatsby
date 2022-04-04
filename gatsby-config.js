@@ -11,7 +11,7 @@ module.exports = {
       options:{
         typeName:`WPGraphQL`,
         fieldName:`wpgraphql`,
-        url: `https://beta.spudniklab.com/kobi/graphql`
+        url: `https://kobi-admin.spudniklab.com/graphql`
       }
     },
     `gatsby-plugin-react-helmet`,

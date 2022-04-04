@@ -7,24 +7,15 @@ import "../styles/category.css"
 import Seo from "../components/seo"
 
 const About = ({}) => {
-  let path
-  let category
-  let capitalized
-  if (typeof window !== "undefined") {
-    path = window.location.pathname
-    category = path.split("/").pop()
-    capitalized = category.charAt(0).toUpperCase() + category.slice(1)
-  }
-
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
   return (
     <div ref={container} className="container">
-      <Seo title={capitalized} />
+      <Seo title={"About"} />
       <header>
         <div className="pageTitle">
           <div className="innerContent">
-            <Typography component="h1">{capitalized}</Typography>
+            ABOUT US
           </div>
         </div>
       </header>

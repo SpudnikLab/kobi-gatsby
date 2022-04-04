@@ -28,8 +28,6 @@ const Category = ({ data }) => {
     } else i--
   }
 
-  
-
   function getDate(str) {
     var monthList = [
       "January",
@@ -88,7 +86,7 @@ const Category = ({ data }) => {
         e.preventDefault()
         player.currentTime(player.currentTime() + 10)
       })
-    }, 100)
+    }, 1000)
   }, [])
 
   return (
@@ -112,7 +110,12 @@ const Category = ({ data }) => {
           <div className="excerpt">{ReactHtmlParser(post.excerpt)}</div>
           <div
             className="audio-player"
-            style={{ display: showAudioPlayer && post.appFields.audioReview?.mediaItemUrl ? "block" : "none" }}
+            style={{
+              display:
+                showAudioPlayer && post.appFields.audioReview?.mediaItemUrl
+                  ? "block"
+                  : "none",
+            }}
           >
             <audio
               controls
@@ -132,7 +135,12 @@ const Category = ({ data }) => {
             className="postButton audio"
             onClick={() => setShowAudioPlayer(true)}
             onKeyDown={() => setShowAudioPlayer(true)}
-            style={{ display: showAudioPlayer || !post.appFields.audioReview?.mediaItemUrl ? "none" : "flex" }}
+            style={{
+              display:
+                showAudioPlayer || !post.appFields.audioReview?.mediaItemUrl
+                  ? "none"
+                  : "flex",
+            }}
           >
             <svg className="audioIcon" viewBox="0 0 22 18">
               <path d="M5.8,3.6H2c-1.1,0-2,0.9-2,2v6c0,1.1,0.9,2,2,2h3.8l7.2,3.6V0L5.8,3.6z M5,11.6H2v-6h3V11.6z M11,14l-4-2V5.2l4-2V14z" />
@@ -241,6 +249,7 @@ const Category = ({ data }) => {
               {`File Size:  ${post.appFields.fileSize}MB`}
             </Typography>
           </div>
+
           <div className="workOffline">
             <svg
               className="footerIcon"
@@ -273,6 +282,27 @@ const Category = ({ data }) => {
                 : "Does Not work offline"}
             </Typography>
           </div>
+          {post.appFields.dataUsage === "1" ? (
+            <div className="workOffline">
+              <svg
+                className="footerIcon"
+                version="1.1"
+                x="0px"
+                y="0px" viewBox="0 0 512 484.2" >
+                <path d="M505.4,407.5l-210-383.1C287.1,9.4,272,0,256,0s-31.1,9.4-39.4,24.5L6.6,407.5c-8.6,15.6-8.8,35.1-0.7,51
+                  c8.1,15.9,23.5,25.7,40.1,25.7h420c16.6,0,31.9-9.9,40.1-25.7C514.2,442.7,514,423.1,505.4,407.5z M458.3,423.8
+                  c-2,3.9-5.8,6.4-9.9,6.4H69.5c-4.1,0-7.9-2.4-9.9-6.4c-2-3.9-2-8.8,0.2-12.7L249.1,65.6c2.1-3.7,5.8-6.1,9.8-6.1
+                  c4,0,7.7,2.3,9.8,6.1l189.4,345.5C460.3,415,460.3,419.8,458.3,423.8z"/>
+                <path d="M259.1,161.6c-16,0-28.5,6.5-28.5,18.1c0,35.3,5.5,86,5.5,121.3c0,9.2,10.6,13.1,23.1,13.1c9.4,0,22.7-3.9,22.7-13.1
+                  c0-35.3,5.5-86,5.5-121.3C287.2,168.1,274.3,161.6,259.1,161.6z"/>
+                <path d="M259.1,331.7c-14.6,0-25.6,11.7-25.6,25.7c0,13.7,11,25.7,25.6,25.7c13.6,0,25.3-12,25.3-25.7
+                  C284.4,343.4,272.7,331.7,259.1,331.7z"/>
+              </svg>
+              <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
+                This app uses a lot of data
+              </Typography>
+            </div>
+          ) : null}
           <div className="lastUpdated">
             Last Updated: {getDate(post.dateGmt)}
           </div>
@@ -380,6 +410,7 @@ export const query = graphql`
           audioReview {
             mediaItemUrl
           }
+          dataUsage
           fileSize
           giveItAMissIf
           goodFor

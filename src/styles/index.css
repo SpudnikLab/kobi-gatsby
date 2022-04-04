@@ -14,6 +14,8 @@ footer{
   margin-top: 10px;
   text-align: center;
   padding:0 10px;
+  display:"flex";
+  flex-direction: column;
 }
 
 .appHeader {
@@ -105,4 +107,24 @@ background-color: #d9ffff;
   margin-top: 5px;
   background: url(../images/Arrow.svg);
   background-repeat: no-repeat;
+}
+
+
+.searchButton {
+  margin: 0 10px 15px;
+  padding: 8px;
+  border: 2px solid teal;
+  border-radius: 5px;
+  color: teal;
+  fill: teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.searchButton:hover {
+  border: 2px solid #2d5750;
+  color: #2d5750;
+  fill: #2d5750;
+  background-color: #f0f0f0;
 }
