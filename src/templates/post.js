@@ -8,10 +8,13 @@ import videojs from "video.js"
 import "../styles/post.css"
 import Seo from "../components/seo"
 
-const Category = ({ data }) => {
+const Category = ({ data, location }) => {
   let post = data.wpgraphql.postBy
   let posts = data.wpgraphql.posts.nodes
   let [showAudioPlayer, setShowAudioPlayer] = useState(false)
+  let [prevPath, setPrevPath]=useState("")
+
+  useState(()=> setPrevPath(window?.history.state?.prevPath))
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
@@ -351,7 +354,7 @@ const Category = ({ data }) => {
       <footer>
         <div className="innerContent">
           <Link
-            to={`/categories/${post.categories.nodes[0].name.toLowerCase()}`}
+            to={prevPath==="search"?"/search":`/categories/${post.categories.nodes[0].name.toLowerCase()}`}
           >
             <button className="postButton">
               <svg
@@ -366,7 +369,7 @@ const Category = ({ data }) => {
                   <path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z" />
                 </g>
               </svg>
-              <div>{`Back to ${post.categories.nodes[0].name}`}</div>
+              <div>Back to {`${prevPath==="search"?"Search":post.categories.nodes[0].name}`}</div>
             </button>
           </Link>
           <button

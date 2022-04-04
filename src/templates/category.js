@@ -92,7 +92,7 @@ const Category = ({ data }) => {
         <div className="innerContent">
           {posts.slice(currentPage * 10, currentPage * 10 + 10).map(post => {
             return (
-              <Link key={post.slug} to={`/${post.slug}`}>
+              <Link key={post.slug} to={`/${post.slug}`}  state={{prevPath:"/search"}}>
                 <div className="appContainer">
                   <img
                     src={post.featuredImage.node.mediaItemUrl}

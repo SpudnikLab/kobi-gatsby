@@ -45,7 +45,11 @@ footer {
   /* text-transform: uppercase; */
   font-size: 14px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 10px;
+}
+
+.pb0{
+  padding-bottom: 0;
 }
 
 .contentContainer {
