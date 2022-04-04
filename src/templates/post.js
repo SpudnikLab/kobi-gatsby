@@ -16,7 +16,7 @@ const Category = ({ data, location }) => {
 
   if (typeof window !== "undefined"){
 
-    useState(()=>setPrevPath(window?.history.state?.prevPath}))
+    useEffect(()=>setPrevPath(window?.history.state?.prevPath))
   }
 
   let container = useRef(null)
