@@ -14,7 +14,10 @@ const Category = ({ data, location }) => {
   let [showAudioPlayer, setShowAudioPlayer] = useState(false)
   let [prevPath, setPrevPath]=useState("")
 
-  useState(()=> setPrevPath(window?.history.state?.prevPath))
+  if (typeof window !== "undefined"){
+
+    useState(()=>setPrevPath(window?.history.state?.prevPath}))
+  }
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
