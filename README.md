@@ -10,9 +10,17 @@ Static site version of Kobi using React Gatsby, allowing better performance and 
 
 1.  Clone this repository to your device.
 
-2.  **Start developing.**
+2.  **Install dependencies.**
 
     Open the folder in your favorite text editor and run the following command.
+
+    ```shell
+    npm install
+    ```
+
+2.  **Start developing.**
+
+    Run the following command.
 
     ```shell
     gatsby develop *or* npm run develop
