@@ -12,12 +12,7 @@ const Category = ({ data, location }) => {
   let post = data.wpgraphql.postBy
   let posts = data.wpgraphql.posts.nodes
   let [showAudioPlayer, setShowAudioPlayer] = useState(false)
-  let [prevPath, setPrevPath]=useState("")
-
-  if (typeof window !== "undefined"){
-
-    useEffect(()=>setPrevPath(window?.history.state?.prevPath))
-  }
+  let [prevPath, setPrevPath] = useState("")
 
   let container = useRef(null)
   const executeScroll = () => container.current.scrollIntoView()
@@ -74,12 +69,15 @@ const Category = ({ data, location }) => {
   // useScript("../review.js")
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setPrevPath(window?.history.state?.prevPath)
+    }
     setTimeout(function addComponent() {
       var player = videojs.getPlayer("audio-review")
       var controlBar = document.querySelector(".vjs-control-bar")
-      var backward10 = document.createElement("button")
+      var backward10 = document.createElement("div")
       backward10.className = "audio-player-btn audio-player-btn--backward"
-      var forward10 = document.createElement("button")
+      var forward10 = document.createElement("div")
       forward10.className = "audio-player-btn audio-player-btn--forward"
 
       controlBar.insertBefore(backward10, controlBar.childNodes[0])
@@ -137,7 +135,7 @@ const Category = ({ data, location }) => {
               />
             </audio>
           </div>
-          <button
+          <div
             className="postButton audio"
             onClick={() => setShowAudioPlayer(true)}
             onKeyDown={() => setShowAudioPlayer(true)}
@@ -155,7 +153,7 @@ const Category = ({ data, location }) => {
             </svg>
 
             <div>Play audio review</div>
-          </button>
+          </div>
           <div className="goodFor">
             <Typography
               sx={{ fontSize: 15, fontWeight: 600 }}
@@ -294,15 +292,23 @@ const Category = ({ data, location }) => {
                 className="footerIcon"
                 version="1.1"
                 x="0px"
-                y="0px" viewBox="0 0 512 484.2" >
-                <path d="M505.4,407.5l-210-383.1C287.1,9.4,272,0,256,0s-31.1,9.4-39.4,24.5L6.6,407.5c-8.6,15.6-8.8,35.1-0.7,51
+                y="0px"
+                viewBox="0 0 512 484.2"
+              >
+                <path
+                  d="M505.4,407.5l-210-383.1C287.1,9.4,272,0,256,0s-31.1,9.4-39.4,24.5L6.6,407.5c-8.6,15.6-8.8,35.1-0.7,51
                   c8.1,15.9,23.5,25.7,40.1,25.7h420c16.6,0,31.9-9.9,40.1-25.7C514.2,442.7,514,423.1,505.4,407.5z M458.3,423.8
                   c-2,3.9-5.8,6.4-9.9,6.4H69.5c-4.1,0-7.9-2.4-9.9-6.4c-2-3.9-2-8.8,0.2-12.7L249.1,65.6c2.1-3.7,5.8-6.1,9.8-6.1
-                  c4,0,7.7,2.3,9.8,6.1l189.4,345.5C460.3,415,460.3,419.8,458.3,423.8z"/>
-                <path d="M259.1,161.6c-16,0-28.5,6.5-28.5,18.1c0,35.3,5.5,86,5.5,121.3c0,9.2,10.6,13.1,23.1,13.1c9.4,0,22.7-3.9,22.7-13.1
-                  c0-35.3,5.5-86,5.5-121.3C287.2,168.1,274.3,161.6,259.1,161.6z"/>
-                <path d="M259.1,331.7c-14.6,0-25.6,11.7-25.6,25.7c0,13.7,11,25.7,25.6,25.7c13.6,0,25.3-12,25.3-25.7
-                  C284.4,343.4,272.7,331.7,259.1,331.7z"/>
+                  c4,0,7.7,2.3,9.8,6.1l189.4,345.5C460.3,415,460.3,419.8,458.3,423.8z"
+                />
+                <path
+                  d="M259.1,161.6c-16,0-28.5,6.5-28.5,18.1c0,35.3,5.5,86,5.5,121.3c0,9.2,10.6,13.1,23.1,13.1c9.4,0,22.7-3.9,22.7-13.1
+                  c0-35.3,5.5-86,5.5-121.3C287.2,168.1,274.3,161.6,259.1,161.6z"
+                />
+                <path
+                  d="M259.1,331.7c-14.6,0-25.6,11.7-25.6,25.7c0,13.7,11,25.7,25.6,25.7c13.6,0,25.3-12,25.3-25.7
+                  C284.4,343.4,272.7,331.7,259.1,331.7z"
+                />
               </svg>
               <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
                 This app uses a lot of data
@@ -357,7 +363,11 @@ const Category = ({ data, location }) => {
       <footer>
         <div className="innerContent">
           <Link
-            to={prevPath==="search"?"/search":`/categories/${post.categories.nodes[0].name.toLowerCase()}`}
+            to={
+              prevPath === "search"
+                ? "/search"
+                : `/categories/${post.categories.nodes[0].name.toLowerCase()}`
+            }
           >
             <button className="postButton">
               <svg
@@ -372,7 +382,14 @@ const Category = ({ data, location }) => {
                   <path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z" />
                 </g>
               </svg>
-              <div>Back to {`${prevPath==="search"?"Search":post.categories.nodes[0].name}`}</div>
+              <div>
+                Back to{" "}
+                {`${
+                  prevPath === "search"
+                    ? "Search"
+                    : post.categories.nodes[0].name
+                }`}
+              </div>
             </button>
           </Link>
           <button

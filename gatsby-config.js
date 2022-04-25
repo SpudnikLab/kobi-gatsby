@@ -6,13 +6,14 @@ module.exports = {
     siteUrl: `https://kobi.spudniklab.com/`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     {
-      resolve:`gatsby-source-graphql`,
-      options:{
-        typeName:`WPGraphQL`,
-        fieldName:`wpgraphql`,
-        url: `https://kobi-admin.spudniklab.com/graphql`
-      }
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `WPGraphQL`,
+        fieldName: `wpgraphql`,
+        url: `https://kobi-admin.spudniklab.com/graphql`,
+      },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,

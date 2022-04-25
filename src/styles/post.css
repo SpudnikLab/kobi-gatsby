@@ -31,7 +31,6 @@ p {
 .postContent {
   margin-left: auto;
   margin-right: auto;
-  min-width: 210px;
   max-width: 480px;
   padding: 0 15px;
 }
@@ -161,6 +160,7 @@ p {
 
 .audio {
   margin: 15px 0;
+  width: auto;
 }
 
 .audioIcon {
