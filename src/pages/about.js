@@ -59,6 +59,17 @@ const About = ({}) => {
             test the apps, and find the best ones so you don’t have to waste
             time downloading and trying different apps.
           </p>
+          <p>
+            
+          <Typography
+            sx={{ fontSize: "1rem", fontWeight: 500, color: "teal" }}
+            component="h1"
+          >
+            Current Version:
+          </Typography>
+            Kobi v.1.1
+            (Updated 2022-04-26T02:56:43+00:00)
+          </p>
         </div>
       </div>
       <footer>
