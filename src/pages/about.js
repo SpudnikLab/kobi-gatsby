@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 import { Link } from "gatsby"
-import { graphql } from "gatsby"
 import Typography from "@mui/material/Typography"
 
 import "../styles/category.css"

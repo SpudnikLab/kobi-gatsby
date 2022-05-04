@@ -1,4 +1,4 @@
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const categories = graphql(`
@@ -21,32 +21,49 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  const posts = graphql(`
-    query GetPosts {
-      wpgraphql {
-        posts(where: { orderby: { field: DATE, order: DESC } }, first: 200) {
-          edges {
-            node {
-              slug
-              categories {
-                nodes {
-                  name
-                }
-              }
+  const QUERY = `
+  query GetPosts ($after:String) {
+    wpgraphql {
+      posts(where: { orderby: { field: DATE, order: DESC } },first: 80,after: $after) {
+        pageInfo {
+            endCursor
+            hasNextPage
+          }
+        nodes {
+          slug
+          categories {
+            nodes {
+              name
             }
           }
         }
       }
     }
-  `).then(result => {
-    result.data.wpgraphql.posts.edges.forEach(item => {
+  }
+`
+
+  let endCursor = "YXJyYXljb25uZWN0aW9uOjExNTg="
+
+  const posts = graphql(QUERY).then(result => {
+    result.data.wpgraphql.posts.nodes.forEach(item => {
       createPage({
-        path: "/" + item.node.slug,
+        path: "/" + item.slug,
         component: require.resolve("./src/templates/post.js"),
-        context: { slug: item.node.slug, category:item.node.categories.nodes[0].name },
+        context: { slug: item.slug, category: item.categories.nodes[0].name },
       })
     })
   })
 
-  return Promise.all([categories, posts])
+  const posts2 = graphql(QUERY,{after: endCursor}).then(result => {
+    endCursor = result.data.wpgraphql.posts.pageInfo.endCursor
+    result.data.wpgraphql.posts.nodes.forEach(item => {
+      createPage({
+        path: "/" + item.slug,
+        component: require.resolve("./src/templates/post.js"),
+        context: { slug: item.slug, category: item.categories.nodes[0].name },
+      })
+    })
+  })
+
+  return Promise.all([categories, posts,posts2])
 }

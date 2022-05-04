@@ -1,7 +1,5 @@
-import React, { useRef, useState } from "react"
+import React, { useRef } from "react"
 import { Link } from "gatsby"
-import { graphql } from "gatsby"
-import Typography from "@mui/material/Typography"
 
 import "../styles/category.css"
 import Seo from "../components/seo"
@@ -9,7 +7,6 @@ import { Box, InputBase } from "@mui/material"
 
 const NotFoundPage = () => {
   let container = useRef(null)
-  const executeScroll = () => container.current.scrollIntoView()
 
   return (
     <div ref={container} className="container">

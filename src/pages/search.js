@@ -47,7 +47,11 @@ const Search = ({ data }) => {
                 placeholder="Search"
                 value={search}
                 autoFocus
-                onChange={event => setSearch(event.target.value)}
+                onChange={event => [
+                  setSearch(event.target.value),
+                  executeScroll(),
+                  setCurrentPage(0)
+                ]}
               />
               <svg
                 className="footerIcon"
@@ -88,9 +92,10 @@ const Search = ({ data }) => {
               className={`footerButton flex pr ${
                 currentPage === 0 ? "disabled" : "null"
               }`}
-              onClick={() =>
-                currentPage > 0 ? setCurrentPage(currentPage - 1) : null
-              }
+              onClick={() => [
+                currentPage > 0 ? setCurrentPage(currentPage - 1) : null,
+                executeScroll(),
+              ]}
             >
               <svg
                 className="footerIcon"
@@ -110,9 +115,12 @@ const Search = ({ data }) => {
               className={`footerButton flex ${
                 currentPage + 1 === pages ? "disabled" : "null"
               }`}
-              onClick={() =>
-                currentPage + 1 < pages ? setCurrentPage(currentPage + 1) : null
-              }
+              onClick={() => [
+                currentPage + 1 < pages
+                  ? setCurrentPage(currentPage + 1)
+                  : null,
+                executeScroll(),
+              ]}
             >
               <div>Next</div>
               <svg
@@ -136,9 +144,9 @@ const Search = ({ data }) => {
               flexDirection: "column",
               width: "100%",
               textAlign: "center",
-              alignItems:"center",
+              alignItems: "center",
               padding: "10px",
-              display:length>0?"none":"flex"
+              display: length > 0 ? "none" : "flex",
             }}
           >
             <div className="logoContainer2"></div>
@@ -148,7 +156,11 @@ const Search = ({ data }) => {
             .slice(currentPage * 10, currentPage * 10 + 10)
             .map(post => {
               return (
-                <Link key={post.slug} to={`/${post.slug}`} state={{prevPath:"search"}}>
+                <Link
+                  key={post.slug}
+                  to={`/${post.slug}`}
+                  state={{ prevPath: "search" }}
+                >
                   <div className="appContainer">
                     <img
                       src={post.featuredImage.node.mediaItemUrl}
@@ -183,9 +195,10 @@ const Search = ({ data }) => {
               className={`footerButton flex pr ${
                 currentPage === 0 ? "disabled" : "null"
               }`}
-              onClick={() =>
-                currentPage > 0 ? setCurrentPage(currentPage - 1) : null
-              }
+              onClick={() => [
+                currentPage > 0 ? setCurrentPage(currentPage - 1) : null,
+                executeScroll(),
+              ]}
             >
               <svg
                 className="footerIcon"
@@ -205,9 +218,12 @@ const Search = ({ data }) => {
               className={`footerButton flex ${
                 currentPage + 1 === pages ? "disabled" : "null"
               }`}
-              onClick={() =>
-                currentPage + 1 < pages ? setCurrentPage(currentPage + 1) : null
-              }
+              onClick={() => [
+                currentPage + 1 < pages
+                  ? setCurrentPage(currentPage + 1)
+                  : null,
+                executeScroll(),
+              ]}
             >
               <div>Next</div>
               <svg

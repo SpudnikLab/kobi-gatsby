@@ -184,11 +184,11 @@ p {
 }
 .audio-player-btn--backward {
   border-width: 1px 2px 0 0 !important;
-  background: url(../images/backward-10.svg) no-repeat teal center/16px auto !important;
+  background: url(../images/backward-10.png) no-repeat teal center/16px auto !important;
 }
 .audio-player-btn--forward {
   border-width: 1px 0 0 2px !important;
-  background: url(../images/forward-10.svg) no-repeat teal center/16px auto !important;
+  background: url(../images/forward-10.png) no-repeat teal center/16px auto !important;
 }
 .audio-player .video-js {
   background: none;

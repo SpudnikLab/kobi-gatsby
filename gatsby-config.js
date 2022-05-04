@@ -15,6 +15,7 @@ module.exports = {
         url: `https://kobi-admin.spudniklab.com/graphql`,
       },
     },
+    // {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
