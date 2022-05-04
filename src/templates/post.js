@@ -286,7 +286,7 @@ const Category = ({ data, location }) => {
                 : "Does Not work offline"}
             </Typography>
           </div>
-          {post.appFields.dataUsage === "1" ? (
+          {/* {post.appFields.dataUsage === "1" ? (
             <div className="workOffline">
               <svg
                 className="footerIcon"
@@ -314,7 +314,7 @@ const Category = ({ data, location }) => {
                 This app uses a lot of data
               </Typography>
             </div>
-          ) : null}
+          ) : null} */}
           <div className="lastUpdated">
             Last Updated: {getDate(post.dateGmt)}
           </div>

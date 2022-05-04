@@ -32,16 +32,16 @@ const Category = ({ data }) => {
             <Typography component="h1">{capitalized}</Typography>
           </div>
         </div>
-        <div className={`${pages > 1 ? "paginationHeader" : "hide"}`}>
+        {/* <div className={`${pages > 1 ? "paginationHeader" : "hide"}`}>
           <div className="innerContent">
             Page {currentPage + 1} / {pages}
           </div>
-        </div>
+        </div> */}
       </header>
       <div
-        className={`contentContainer ${pages > 1 ? "withPagination" : null}`}
+        className={`contentContainer`}
       >
-        <div className="innerContent ph">
+        {/* <div className="innerContent ph">
           <div className={`${pages > 1 ? "navigationContainer" : "hide"}`}>
             <div
               className={`footerButton flex pr ${
@@ -88,7 +88,7 @@ const Category = ({ data }) => {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="innerContent">
           {posts.slice(currentPage * 10, currentPage * 10 + 10).map(post => {
             return (
@@ -117,7 +117,7 @@ const Category = ({ data }) => {
             )
           })}
         </div>
-        <div className="innerContent ph">
+        {/* <div className="innerContent ph">
           <div className={`${pages > 1 ? "navigationContainer" : "hide"}`}>
             <div
               className={`footerButton flex pr ${
@@ -164,7 +164,7 @@ const Category = ({ data }) => {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <footer>
         <div className="innerContent">

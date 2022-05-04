@@ -68,7 +68,7 @@ const IndexPage = ({ data }) => {
                 }
               })}
             </Grid>
-            <Link to="/search/">
+            {/* <Link to="/search/">
               <div className="searchButton">
                 <svg
                   className="footerIcon"
@@ -87,7 +87,7 @@ const IndexPage = ({ data }) => {
                   </svg>
                 <div>Search</div>
               </div>
-            </Link>
+            </Link> */}
           </section>
           <footer>
             <p>Kobi finds apps that help you live a better life.</p>
