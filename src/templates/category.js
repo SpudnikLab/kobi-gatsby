@@ -90,7 +90,7 @@ const Category = ({ data }) => {
           </div>
         </div> */}
         <div className="innerContent">
-          {posts.slice(currentPage * 10, currentPage * 10 + 10).map(post => {
+          {posts.map(post => {
             return (
               <Link key={post.slug} to={`/${post.slug}`}  state={{prevPath:"/search"}}>
                 <div className="appContainer">

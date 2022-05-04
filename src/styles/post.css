@@ -24,6 +24,10 @@ p {
   padding: 40px 0 10px 0;
 }
 
+.pt{
+  padding-top: 20px;
+}
+
 .similarAppsContainer {
   padding: 10px 0;
 }

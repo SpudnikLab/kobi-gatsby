@@ -369,7 +369,7 @@ const Category = ({ data, location }) => {
                 : `/categories/${post.categories.nodes[0].name.toLowerCase()}`
             }
           >
-            <button className="postButton">
+            <div className="postButton">
               <svg
                 className="footerIcon"
                 version="1.1"
@@ -390,9 +390,9 @@ const Category = ({ data, location }) => {
                     : post.categories.nodes[0].name
                 }`}
               </div>
-            </button>
+            </div>
           </Link>
-          <button
+          <div
             className="postButton"
             onClick={executeScroll}
             onKeyDown={executeScroll}
@@ -403,7 +403,7 @@ const Category = ({ data, location }) => {
               </g>
             </svg>
             <div>Top of Page</div>
-          </button>
+          </div>
         </div>
       </footer>
     </div>

@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography"
 
 import "../styles/category.css"
 import Seo from "../components/seo"
+import { StaticImage } from "gatsby-plugin-image"
 
 const About = ({}) => {
   let container = useRef(null)
@@ -18,17 +19,10 @@ const About = ({}) => {
           </div>
         </div>
       </header>
-      <div className="contentContainer">
+      <div className="contentContainer pt">
         <div className="postContent">
-          <div>
-            <img
-              src={
-                "https://kobi.spudniklab.com/wp-content/uploads/2021/05/kobi.svg"
-              }
-              alt={"Kobi Logo"}
-              style={{ height: "auto", maxHeight: "150px", width: "100%" }}
-            />
-          </div>
+
+          <div className="logoContainer2"></div>
           <Typography
             sx={{ fontSize: 18, fontWeight: 700, color: "teal" }}
             component="h1"
