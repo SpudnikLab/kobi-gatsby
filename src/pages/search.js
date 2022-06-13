@@ -163,7 +163,7 @@ const Search = ({ data }) => {
                 >
                   <div className="appContainer">
                     <img
-                      src={post.featuredImage.node.mediaItemUrl}
+                      src={post.featuredImage?.node?.mediaItemUrl}
                       alt={post.title}
                       className="appIcon"
                     />
@@ -179,6 +179,7 @@ const Search = ({ data }) => {
                       </Typography>
                       <Typography sx={{ fontSize: 14 }}>
                         {post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")}
+                        
                       </Typography>
                       <div
                         className={`rating rate-${post.appFields.overallRating}`}

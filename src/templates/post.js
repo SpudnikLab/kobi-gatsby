@@ -4,6 +4,8 @@ import { graphql } from "gatsby"
 import ReactHtmlParser from "react-html-parser"
 import Typography from "@mui/material/Typography"
 import videojs from "video.js"
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
+import AppShortcutIcon from "@mui/icons-material/AppShortcut"
 
 import "../styles/post.css"
 import Seo from "../components/seo"
@@ -100,7 +102,7 @@ const Category = ({ data, location }) => {
         <div className="postContent">
           <div>
             <img
-              src={post.featuredImage.node.mediaItemUrl}
+              src={post.featuredImage?.node?.mediaItemUrl}
               alt={post.title}
               className="icon"
             />
@@ -286,7 +288,7 @@ const Category = ({ data, location }) => {
                 : "Does Not work offline"}
             </Typography>
           </div>
-          {/* {post.appFields.dataUsage === "1" ? (
+          {post.appFields.dataUsage === "1" ? (
             <div className="workOffline">
               <svg
                 className="footerIcon"
@@ -314,7 +316,40 @@ const Category = ({ data, location }) => {
                 This app uses a lot of data
               </Typography>
             </div>
-          ) : null} */}
+          ) : null}
+
+          {post.appFields.appVersion ? (
+            <div className="workOffline">
+              <AppShortcutIcon
+                sx={{
+                  fontSize: 16,
+                  // height: "15px",
+                  width: "16px",
+                  marginRight: "10px",
+                  fill: "#2d5750",
+                }}
+              />
+              <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
+                {`Version Reviewed:  ${post.appFields.appVersion}`}
+              </Typography>
+            </div>
+          ) : null}
+          {post.appFields.reviewDate ? (
+            <div className="workOffline">
+              <CalendarMonthIcon
+                sx={{
+                  fontSize: 16,
+                  // height: "15px",
+                  width: "16px",
+                  marginRight: "10px",
+                  fill: "#2d5750",
+                }}
+              />
+              <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
+                {`Review Date:  ${post.appFields.reviewDate}`}
+              </Typography>
+            </div>
+          ) : null}
           <div className="lastUpdated">
             Last Updated: {getDate(post.dateGmt)}
           </div>
@@ -337,7 +372,7 @@ const Category = ({ data, location }) => {
               <Link key={post.slug} to={`/${post.slug}`}>
                 <div className="appContainer">
                   <img
-                    src={post.featuredImage.node.mediaItemUrl}
+                    src={post.featuredImage?.node?.mediaItemUrl}
                     alt={post.title}
                     className="appIcon"
                   />
@@ -435,7 +470,6 @@ export const query = graphql`
           }
           dataUsage
           fileSize
-          giveItAMissIf
           goodFor
           howEngagingItIs
           howItWorks
@@ -446,6 +480,8 @@ export const query = graphql`
           theGood
           worksOffline
           worksWellOnline
+          reviewDate
+          appVersion
         }
         title
         slug
