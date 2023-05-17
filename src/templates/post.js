@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
-// import ReactHtmlParser from "react-html-parser"
 import Typography from "@mui/material/Typography"
 import videojs from "video.js"
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
