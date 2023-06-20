@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import parse from 'html-react-parser';
+// Safe Parser
 import Typography from "@mui/material/Typography"
 import videojs from "video.js"
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
