@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import parse from 'html-react-parser';
-// Safe Parser
 import Typography from "@mui/material/Typography"
 import videojs from "video.js"
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
@@ -114,7 +113,8 @@ const Category = ({ data, location }) => {
           >
             {post.title}
           </Typography>
-          <div className="excerpt">{parse(post.excerpt)}</div>
+          
+          <div className="excerpt" dangerouslySetInnerHTML={{ __html:post.excerpt }}/>
           <div
             className="audio-player"
             style={{
@@ -164,7 +164,8 @@ const Category = ({ data, location }) => {
             >
               Good for:
             </Typography>
-            {parse(post.appFields.goodFor)}
+
+            <div dangerouslySetInnerHTML={{ __html: post.appFields.goodFor }}/>
           </div>
           <div className="howItWorks">
             <Typography
@@ -173,7 +174,7 @@ const Category = ({ data, location }) => {
             >
               How it works:
             </Typography>
-            {parse(post.appFields.howItWorks)}
+            <div dangerouslySetInnerHTML={{ __html: post.appFields.howItWorks }}/>
           </div>
           <div className="theGood">
             <Typography
@@ -182,7 +183,7 @@ const Category = ({ data, location }) => {
             >
               The good:
             </Typography>
-            {parse(post.appFields.theGood)}
+            <div dangerouslySetInnerHTML={{ __html: post.appFields.theGood }}/>
           </div>
           <div className="theBad">
             <Typography
@@ -191,7 +192,7 @@ const Category = ({ data, location }) => {
             >
               The bad:
             </Typography>
-            {parse(post.appFields.theBad)}
+            <div dangerouslySetInnerHTML={{ __html: post.appFields.theBad }}/>
           </div>
           <div className="ratings">
             <div>
@@ -249,7 +250,7 @@ const Category = ({ data, location }) => {
               className="footerIcon"
             >
               <g id="filesize-icon">
-                <path d="M11.9,6.36L9.29,8.96V0.58H7.71v8.38L5.1,6.36L3.98,7.48l4.52,4.52l4.52-4.52L11.9,6.36z M16.42,14.83v-3.17								h-1.58v3.17H2.17v-3.17H0.58v3.17c0,0.87,0.71,1.58,1.58,1.58h12.67C15.71,16.42,16.42,15.71,16.42,14.83z"></path>
+                <path d="M11.9,6.36L9.29,8.96V0.58H7.71v8.38L5.1,6.36L3.98,7.48l4.52,4.52l4.52-4.52L11.9,6.36z M16.42,14.83v-3.17h-1.58v3.17H2.17v-3.17H0.58v3.17c0,0.87,0.71,1.58,1.58,1.58h12.67C15.71,16.42,16.42,15.71,16.42,14.83z"></path>
               </g>
             </svg>
             <Typography sx={{ fontSize: 14, fontWeight: 600 }}>
