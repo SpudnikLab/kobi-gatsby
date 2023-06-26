@@ -6,7 +6,6 @@ module.exports = {
     siteUrl: `https://kobi.spudniklab.com/`,
   },
   plugins: [
-    `gatsby-plugin-esbuild`,
     `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-graphql`,
