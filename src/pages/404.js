@@ -1,49 +1,59 @@
-import * as React from "react"
+import React, { useRef } from "react"
 import { Link } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import "../styles/category.css"
+import Seo from "../components/seo"
+// import { div, InputBase } from "@mui/material"
 
 const NotFoundPage = () => {
+  let container = useRef(null)
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <div ref={container} className="container">
+      <Seo title={"Search"} />
+
+      <div
+        className={`contentContainer`}
+      >
+        <div className="innerContent">
+          <div
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              textAlign: "center",
+              alignItems: "center",
+              padding: "10px",
+              display: "flex",
+            }}
+          >
+            <div className="logoContainer2"></div>
+            Oops! Kobi can’t find what you’re looking for.
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div className="innerContent">
+          <Link to="/">
+            <div className="footerButton">
+              <svg
+                className="footerIcon"
+                version="1.1"
+                id="arrow-back"
+                x="0px"
+                y="0px"
+                viewdiv="0 0 16 16"
+              >
+                <g id="arrow-back-icon">
+                  <path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z" />
+                </g>
+              </svg>
+              <div>Back to Home</div>
+            </div>
+          </Link>
+        </div>
+      </footer>
+    </div>
   )
 }
 
 export default NotFoundPage
-
-export const Head = () => <title>Not found</title>
