@@ -60,8 +60,8 @@ const About = ({}) => {
           >
             Current Version:
           </Typography>
-            Kobi v.1.1
-            (Updated 2022-04-26T02:56:43+00:00)
+            Kobi v.1.2
+            (Updated 2023-10-31T02:56:43+00:00)
           </p>
         </div>
       </div>
