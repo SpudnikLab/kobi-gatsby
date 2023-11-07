@@ -32,6 +32,7 @@ const Search = ({ data }) => {
       return newSearch; // Return the new search value
     });
   };  
+  
   const handlePrevClick = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
