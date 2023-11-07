@@ -55,7 +55,6 @@ const Search = ({ data }) => {
 
   const render = () => {
     const filteredPosts = filterAndSlicePosts();
-
     return (
       <div ref={container} className="container">
         <Seo title={"Search"} />
