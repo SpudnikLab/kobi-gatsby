@@ -29,6 +29,7 @@ const Search = ({ data }) => {
   const handleSearch = (newSearch) => {
     setSearch(newSearch);
   }
+  
   return (
     <div ref={container} className="container">
       <Seo title={"Search"} />
