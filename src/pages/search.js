@@ -40,6 +40,7 @@ const Search = ({ data }) => {
 
   const handleNextClick = () => {
     if (currentPage + 1 < pages) {
+      console.log("tessnextclick");
       setCurrentPage(currentPage + 1);
       executeScroll();
       render(); // Re-render the component
