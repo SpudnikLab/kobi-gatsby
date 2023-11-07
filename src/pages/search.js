@@ -26,6 +26,10 @@ const Search = ({ data }) => {
   let [currentPage, setCurrentPage] = useState(0)
   let pages = Math.ceil(length / 10)
 
+  const handleSearch = (newSearch) => {
+    setSearch(newSearch);
+  }
+
   return (
     <div ref={container} className="container">
       <Seo title={"Search"} />
@@ -210,17 +214,15 @@ const Search = ({ data }) => {
                 height: 35,
               }}
             >
-              <InputBase
-                sx={{ flex: 1, fontSize: 14 }}
-                placeholder="Search"
-                value={search}
-                autoFocus
-                onChange={event => [
-                  setSearch(event.target.value),
-                  executeScroll(),
-                  setCurrentPage(0)
-                ]}
-              />
+              <Link to={`/search?searchInput=${search}`} onClick={executeScroll}>
+                <InputBase
+                  sx={{ flex: 1, fontSize: 14 }}
+                  placeholder="Search"
+                  value={search}
+                  autoFocus
+                  onChange={event => handleSearch(event.target.value)}
+                />
+              </Link>
               <svg
                 className="footerIcon"
                 version="1.1"
