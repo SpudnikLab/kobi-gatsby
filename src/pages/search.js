@@ -24,6 +24,7 @@ const Search = ({ data }) => {
   const handleSearchChange = (event) => {
     setSearch(event.target.value); // Update the search variable
     console.log("Search value:", event.target.value);
+    console.log("search:", search);
     executeScroll();
     setCurrentPage(0); // Reset currentPage
     render(); // Re-render the component
