@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Typography from "@mui/material/Typography"
 
-import "../styles/category.css"
+// import "../styles/category.css"
 import Seo from "../components/seo"
 import { Box, InputBase } from "@mui/material"
 
@@ -29,6 +29,174 @@ const Search = ({ data }) => {
   return (
     <div ref={container} className="container">
       <Seo title={"Search"} />
+      <style>
+        {`
+          body {
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 100;
+          }
+          
+          a {
+            color: black;
+            text-decoration: none;
+          }
+          
+          footer {
+            margin: 0 0 20px 0;
+          }
+          
+          .header {
+            position: fixed;
+            width: 100%;z-index: 100;
+          }
+          
+          .pageTitle {
+            background-color: #2d5750;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            padding: 5px 0px;
+            font-weight: 600;
+          }
+          
+          .paginationHeader {
+            background-color: #d9d9d9;
+            color: #2d5750;
+            text-align: center;
+            height: 20px;
+            /* text-transform: uppercase; */
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 0px;
+          }
+          
+          .searchHeader {
+            background-color: #d9d9d9;
+            color: #2d5750;
+            text-align: center;
+            /* text-transform: uppercase; */
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px;
+          }
+          
+          .pb0{
+            padding-bottom: 0;
+          }
+          
+          .contentContainer {
+            padding: 45px 0 10px 0;
+          }
+          
+          
+          .contentContainer.withPagination {
+            padding: 65px 0 10px 0;
+          }
+          
+          .contentContainer.withPagination.search {
+            padding: 80px 0 10px 0;
+          }
+          
+          
+          .contentContainer.search {
+            padding: 60px 0 10px 0;
+          }
+          
+          .innerContent {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 480px;
+          }
+          
+          
+          .appContainer {
+            display: flex;
+            padding: 15px;
+            cursor: pointer;
+          }
+          
+          .appContainer:hover {
+            background-color: #d9ffff;
+          }
+          
+          .appIcon {
+            height: 35px;
+            width: 35px;
+            object-fit: contain;
+            margin-right: 10px;
+          }
+          
+          .ph{
+            padding: 0 10px;
+          }
+          
+          .hide{
+            display:none;
+          }
+          
+          .navigationContainer{
+            margin: 10px 0;
+            display:flex;
+            justify-content: space-evenly;
+          }
+          
+          .pr {
+            margin-right: 8px;
+          }
+          
+          .footerButton {
+            margin-bottom: 5px;
+            padding: 8px;
+            border: 2px solid teal;
+            border-radius: 5px;
+            color: teal;
+            fill: teal;
+            display: flex;
+            flex:1;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+          
+          
+          .footerButton.disabled {
+            border: 2px solid grey;
+            color: grey;
+            fill: grey;
+            cursor: pointer;
+          }
+          
+          .footerButton:hover {
+            border: 2px solid #2d5750;
+            color: #2d5750;
+            fill: #2d5750;
+            background-color: #f0f0f0;
+          }
+          
+          
+          .footerButton:hover.disabled {
+            border: 2px solid grey;
+            color: grey;
+            fill: grey;
+            background-color: #ffffff;
+            cursor:context-menu;
+          }
+          
+          .footerIcon {
+            height: 15px;
+            width: 15px;
+            margin-right: 10px;
+            fill: #2d5750;
+          }
+          .footerIcon.right {
+            height: 15px;
+            width: 15px;
+            margin-left: 10px;
+            transform: rotateY(180deg);
+          }                   
+        `}
+      </style>
       <header className="header">
         <Box className={`searchHeader ${pages > 1 ? "pb0" : null}`}>
           <div className="innerContent">

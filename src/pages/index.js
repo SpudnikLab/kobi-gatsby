@@ -8,7 +8,7 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 
-import "../styles/index.css"
+// import "../styles/index.css"
 import Seo from "../components/seo"
 
 const IndexPage = ({ data }) => {
@@ -16,6 +16,158 @@ const IndexPage = ({ data }) => {
   return (
     <div>
       <Seo title="Kobi" />
+      <style>
+        {`
+          body {
+            margin: 0;
+            font-family:'Open Sans', sans-serif;
+            font-weight: 100;
+            font-size: 15px;
+          }
+          
+          a{
+            color: black;
+            text-decoration: none;
+          }
+          
+          footer{
+            margin-top: 10px;
+            text-align: center;
+            padding:0 10px;
+            display:"flex";
+            flex-direction: column;
+          }
+          
+          .appHeader {
+            background-color: #2d5750;
+          }
+          
+          .titleContainer{
+            padding: 10px;
+            height:60px;
+            display: flex;
+            align-items: center;
+            color: white;
+          }
+          
+          .logoContainer{
+            min-height:58px;
+            max-height: 58px;
+            min-width:58px;
+            max-width: 58px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 10px;
+            background: url(https://demo-kobi-gokart.netlify.app/static/Kobi_Logo-75c3f61b32a9490ac733a26ee2376d69.svg);
+          }
+          .logoContainer2 {
+            min-height: 150px;
+            max-height: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            background: url(https://demo-kobi-gokart.netlify.app/static/Kobi_Logo-75c3f61b32a9490ac733a26ee2376d69.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+          
+          
+          
+          .textContainer{
+            flex:1;
+          }
+          
+          .categoriesHeader {
+            background-color: #d9d9d9;
+            color: #2d5750;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 0px;
+          }
+          
+          .innerContent {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 480px;
+          }
+          
+          .categoryContainer{
+              padding: 10px 0
+          }
+          
+          .categoriesButton {
+              padding:5px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              font-size: 15px;
+              line-height: 24px;
+              cursor: pointer;
+          }
+          
+          .categoriesButton:hover{
+          background-color: #d9ffff;
+          }
+          
+          .categoriesIcon{
+              height: 30px;
+              width: 30px;
+              object-fit: contain;
+          }
+          
+          .aboutButton{
+            display: inline-block;
+            background-color: teal;
+            padding:10px;
+            color:white;
+            border-radius: 5px;
+          }
+          .aboutButton:hover{
+            background-color: #2d5750;
+          }
+          
+          .arrowContainer{
+            min-height:24px;
+            max-height: 24px;
+            min-width:24px;
+            max-width: 24px;
+            margin-left: auto;
+            margin-right: 40px;
+            margin-top: 5px;
+            background: url(../images/Arrow.svg);
+            background-repeat: no-repeat;
+          }
+          .footerIcon {
+            height: 15px;
+            width: 15px;
+            margin-right: 10px;
+            fill: #2d5750;
+          }
+          
+          .searchButton {
+            margin: 0 10px 15px;
+            padding: 8px;
+            border: 2px solid teal;
+            border-radius: 5px;
+            color: teal;
+            fill: teal;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+          .searchButton:hover {
+            border: 2px solid #2d5750;
+            color: #2d5750;
+            fill: #2d5750;
+            background-color: #f0f0f0;
+          }
+        `}
+      </style>
       <header>
         <div className="appHeader">
           <div className="innerContent">
