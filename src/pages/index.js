@@ -220,7 +220,7 @@ const IndexPage = ({ data }) => {
                 }
               })}
             </Grid>
-            <Link to="/search/">
+            <Link to="https://beta.spudniklab.com/demo-kobi/search">
               <div className="searchButton">
                 <svg
                   className="footerIcon"
