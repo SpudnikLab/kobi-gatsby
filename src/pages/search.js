@@ -22,17 +22,14 @@ const Search = ({ data }) => {
   };
 
   const handleSearchChange = (event) => {
-    setSearch((prevSearch) => {
-      const newSearch = event.target.value; // New search value
-      console.log("Search value:", newSearch);
-      console.log("search:", prevSearch);
-      executeScroll();
-      setCurrentPage(0); // Reset currentPage
-      render(); // Re-render the component
-      return newSearch; // Return the new search value
-    });
-  };  
-  
+    console.log("hai");
+    setSearch(event.target.value); // Update the search variable
+    console.log("Search value:", event.target.value);
+    executeScroll();
+    setCurrentPage(0); // Reset currentPage
+    render(); // Re-render the component
+  };
+
   const handlePrevClick = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
@@ -247,7 +244,9 @@ const Search = ({ data }) => {
                   sx={{ flex: 1, fontSize: 14 }}
                   placeholder="Search"
                   value={search}
-                  onChange={handleSearchChange}
+                  onChange={() => {
+                    console.log("change");
+                  }}
                   autoFocus
                 />
                 <svg
