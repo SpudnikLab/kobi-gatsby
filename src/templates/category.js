@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Typography from "@mui/material/Typography"
 
-import "../styles/category.css"
 import Seo from "../components/seo"
 
 const Category = ({ data }) => {
