@@ -244,12 +244,9 @@ const Search = ({ data }) => {
                   sx={{ flex: 1, fontSize: 14 }}
                   placeholder="Search"
                   value={search}
-                  onChange={() => {
-                    console.log("change");
-                  }}
+                  onChange={handleSearchChange}
                   autoFocus
                 />
-
                 <svg
                   className="footerIcon"
                   version="1.1"
