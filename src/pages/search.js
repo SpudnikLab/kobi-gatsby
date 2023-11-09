@@ -249,7 +249,6 @@ const Search = ({ data }) => {
                   }}
                   autoFocus
                 />
-                
                 <svg
                   className="footerIcon"
                   version="1.1"
