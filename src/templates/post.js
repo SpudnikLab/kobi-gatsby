@@ -591,7 +591,7 @@ const Category = ({ data, location }) => {
                 Works Well
               </Typography>
               <div
-                className={`ratingSmall smallRate-${post.appFields.howEngagingItIs}`}
+                className={`ratingSmall smallRate-${post.appFields.worksWellOnline}`}
               />
             </div>
             <div className="ratingSmallContainer">
