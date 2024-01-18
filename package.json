@@ -7,7 +7,6 @@
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
-    "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.2.2",
     "gatsby": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
@@ -21,15 +20,14 @@
     "gatsby-source-graphql": "^4.2.0",
     "gatsby-source-wordpress": "^6.13.0",
     "gatsby-transformer-sharp": "^4.2.0",
-    "html-react-parser": "^4.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-html-parser": "^2.0.2",
     "video.js": "^7.17.0"
   },
   "devDependencies": {
-    "gatsby-plugin-esbuild": "^0.0.5",
     "prettier": "^2.4.1"
   },
   "keywords": [
